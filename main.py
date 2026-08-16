@@ -38,6 +38,11 @@ filemenu.add_command(label="Exit", command=root.quit)
 editmenu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="Edit", menu=editmenu)
 
+editmenu.add_command(label="Undo")
+editmenu.add_command(label="Redo")
+editmenu.add_command(label="dunno")
+
+
 #help menu
 helpmenu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="Help", menu=helpmenu)
