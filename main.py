@@ -24,6 +24,7 @@ text.grid(row=0, column=0)
 menu = tk.Menu(root)
 root.config(menu=menu)
 
+#file menu
 filemenu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="File", menu=filemenu)
 
@@ -33,6 +34,11 @@ filemenu.add_command(label="Save", command=save_file)
 filemenu.add_separator()
 filemenu.add_command(label="Exit", command=root.quit)
 
+#edit menu
+editmenu = tk.Menu(menu, tearoff=0)
+menu.add_cascade(label="Edit", menu=editmenu)
+
+#help menu
 helpmenu = tk.Menu(menu, tearoff=0)
 menu.add_cascade(label="Help", menu=helpmenu)
 helpmenu.add_command(label="About")
