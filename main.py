@@ -6,7 +6,7 @@ root = Tk()
 root.title("text editor")
 root.geometry("350x500")
 
-#save button function
+#Ag file button function
 def new_file():
     print("new_file")
 
