@@ -18,8 +18,8 @@ def save_file():
 
 
 
-text=Text(root, height=50, width=43)
-text.grid(row=0, column=0)
+text_area=Text(root)
+text_area.pack(fill="both", expand=True)
 
 menu = tk.Menu(root)
 root.config(menu=menu)
