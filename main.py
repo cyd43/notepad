@@ -1,5 +1,4 @@
 import tkinter as tk
-
 from tkinter import *
 
 root = Tk()
@@ -16,11 +15,23 @@ def open_file():
 def save_file():
     print("save_file")
 
+#frame sa text and scrollbar
+text_frame = Frame(root, relief="groove")
+text_frame.pack(fill="both", expand=True)
+
+#text
+text_area=Text(text_frame, bg="lightblue")
+text_area.pack(side="left" ,fill="both", expand=True)
 
 
-text_area=Text(root)
-text_area.pack(fill="both", expand=True)
+#scrollbuttonbar
+scrollbar = Scrollbar(text_frame)
+scrollbar.pack(side="right", fill="y")
 
+text_area.config(yscrollcommand=scrollbar.set)
+scrollbar.config(command=text_area.yview)
+
+#menu
 menu = tk.Menu(root)
 root.config(menu=menu)
 
