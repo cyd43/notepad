@@ -19,14 +19,15 @@ def save_file():
 text_frame = Frame(root, relief="groove")
 text_frame.pack(fill="both", expand=True)
 
-#text
-text_area=Text(text_frame, bg="lightblue")
-text_area.pack(side="left" ,fill="both", expand=True)
-
-
 #scrollbuttonbar
 scrollbar = Scrollbar(text_frame)
 scrollbar.pack(side="right", fill="y")
+
+#text
+text_area=Text(text_frame, bg="lightgrey")
+text_area.pack(side="left" ,fill="both", expand=True)
+
+text_area.insert("1.0", "Hello\n" * 50) #test
 
 text_area.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=text_area.yview)
