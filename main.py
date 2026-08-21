@@ -1,38 +1,46 @@
 import tkinter as tk
-from tkinter import *
+from tkinter import filedialog
 
-root = Tk()
+root = tk.Tk()
 root.title("text editor")
 root.geometry("350x500")
 
-#Ag file button function
-def new_file():
-    print("new_file")
 
-def open_file():
-    print("open_file")
-
-def save_file():
-    print("save_file")
-
-#frame sa text and scrollbar
-text_frame = Frame(root, relief="groove")
+#============frame sa text and scrollbar===========
+text_frame = tk.Frame(root, relief="groove")
 text_frame.pack(fill="both", expand=True)
 
-#scrollbuttonbar
-scrollbar = Scrollbar(text_frame)
+#===========scrollbuttonbar
+scrollbar = tk.Scrollbar(text_frame)
 scrollbar.pack(side="right", fill="y")
 
-#text
-text_area=Text(text_frame, bg="lightgrey")
+#============text
+text_area = tk.Text(text_frame, bg="lightgrey")
 text_area.pack(side="left" ,fill="both", expand=True)
 
-text_area.insert("1.0", "Hello\n" * 50) #test
+text_area.insert("1.0", "Hello\n" * 100) #test 100 hello
 
 text_area.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=text_area.yview)
 
-#menu
+#=================Ag file button function===========
+def new_file():
+    print("new_file")
+
+def open_file():
+    file_path = filedialog.askopenfilename()
+
+    if file_path:
+        with open(file_path, "r") as f:
+            content = f.read()
+
+        text_area.delete("1.0", tk.END)
+        text_area.insert("1.0", content)
+
+def save_file():
+    print("save_file")
+
+#=========menu
 menu = tk.Menu(root)
 root.config(menu=menu)
 
