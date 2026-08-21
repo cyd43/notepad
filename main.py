@@ -23,6 +23,10 @@ text_area.insert("1.0", "Hello\n" * 100) #test 100 hello
 text_area.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=text_area.yview)
 
+#===================================================#
+
+
+
 #=================Ag file button function===========
 def new_file():
     print("new_file")
