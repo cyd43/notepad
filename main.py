@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from tkinter.filedialog import SaveFileDialog
 
 root = tk.Tk()
 root.title("text editor")
@@ -32,7 +33,12 @@ def new_file():
     print("new_file")
 
 def open_file():
-    file_path = filedialog.askopenfilename()
+    file_path = filedialog.askopenfilename(
+        filetypes=[
+            ("Text_Files", "*.txt"),
+            ("All Files", "*.*")
+        ]
+    )
 
     if file_path:
         with open(file_path, "r") as f:
@@ -42,6 +48,20 @@ def open_file():
         text_area.insert("1.0", content)
 
 def save_file():
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".txt",
+        filetypes=[
+            ("Text_Files", "*.txt"),
+            ("All Files", "*.*")
+        ]
+    )
+
+    if file_path:
+        content = text_area.get("1.0", tk.END)
+
+        with open(file_path, "w") as f:
+            f.write(content)
+
     print("save_file")
 
 #=========menu
@@ -64,7 +84,10 @@ menu.add_cascade(label="Edit", menu=editmenu)
 
 editmenu.add_command(label="Undo")
 editmenu.add_command(label="Redo")
-editmenu.add_command(label="dunno")
+editmenu.add_separator()
+editmenu.add_command(label="Cut")
+editmenu.add_command(label="Copy")
+editmenu.add_command(label="Paste")
 
 
 #help menu
