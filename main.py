@@ -6,6 +6,8 @@ root = tk.Tk()
 root.title("text editor")
 root.geometry("350x500")
 
+current_file = None
+
 
 #============frame sa text and scrollbar===========
 text_frame = tk.Frame(root, relief="groove")
@@ -30,8 +32,12 @@ scrollbar.config(command=text_area.yview)
 
 #=================Ag file button function===========
 def new_file():
+    global current_file
+
     text_area.delete("1.0", tk.END)
     print("new_file")
+
+    root.title("Untitled - text editor")
 
 def open_file():
     file_path = filedialog.askopenfilename(
