@@ -8,7 +8,6 @@ root.geometry("350x500")
 
 current_file = None
 
-
 #============frame sa text and scrollbar===========
 text_frame = tk.Frame(root, relief="groove")
 text_frame.pack(fill="both", expand=True)
@@ -21,7 +20,7 @@ scrollbar.pack(side="right", fill="y")
 text_area = tk.Text(text_frame, bg="lightgrey")
 text_area.pack(side="left" ,fill="both", expand=True)
 
-#text_area.insert("1.0", "Hello\n" * 100) #test 100 hello
+text_area.insert("1.0", "Hello\n" * 100) #test 100 hello
 
 text_area.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=text_area.yview)
