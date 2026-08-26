@@ -16,7 +16,7 @@ scrollbar = tk.Scrollbar(text_frame)
 scrollbar.pack(side="right", fill="y")
 
 #============text
-text_area = tk.Text(text_frame, bg="lightgrey")
+text_area = tk.Text(text_frame, bg="lightgrey") # test background to lightgrey
 text_area.pack(side="left" ,fill="both", expand=True)
 
 text_area.insert("1.0", "Hello\n" * 100) #test 100 hello
@@ -34,6 +34,8 @@ def new_file():
 
     text_area.delete("1.0", tk.END)
     print("new_file")
+
+    current_file = None
 
     root.title("Untitled - text editor")
 
