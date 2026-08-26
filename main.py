@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import filedialog
-from tkinter.filedialog import SaveFileDialog
 
 root = tk.Tk()
 root.title("text editor")
@@ -52,6 +51,10 @@ def open_file():
 
         text_area.delete("1.0", tk.END)
         text_area.insert("1.0", content)
+
+        current_file = file_path
+
+        root.title(f"{current_file} - text editor")
 
 def save_file():
     file_path = filedialog.asksaveasfilename(
