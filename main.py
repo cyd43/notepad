@@ -24,7 +24,6 @@ text_area.insert("1.0", "Hello\n" * 100) #test 100 hello
 text_area.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=text_area.yview)
 
-#===================================================#
 
 
 
@@ -74,9 +73,14 @@ def save_file():
             f.write(content)
 
     print("save_file")
-#===============================================================
 
-#=========menu
+#====================EDIT
+
+def font_menu():
+    pass
+
+
+#=============menu
 menu = tk.Menu(root)
 root.config(menu=menu)
 
@@ -100,6 +104,8 @@ editmenu.add_separator()
 editmenu.add_command(label="Cut")
 editmenu.add_command(label="Copy")
 editmenu.add_command(label="Paste")
+editmenu.add_separator()
+editmenu.add_command(label="Font", command=font_menu)
 
 
 #help menu
