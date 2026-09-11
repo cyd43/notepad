@@ -19,7 +19,7 @@ scrollbar.pack(side="right", fill="y")
 text_area = tk.Text(text_frame, bg="lightgrey") # test background to lightgrey
 text_area.pack(side="left" ,fill="both", expand=True)
 
-text_area.insert("1.0", "Hello\n" * 100) #test 100 hello
+text_area.insert("1.0", "hello\n" * 100) #test 100 hello
 
 text_area.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=text_area.yview)
@@ -32,13 +32,14 @@ def new_file():
     global current_file
 
     text_area.delete("1.0", tk.END)
-    print("new_file")
+    print("new_file") #Testing==========================
 
     current_file = None
 
     root.title("Untitled - text editor")
 
 def open_file():
+    global current_file
     file_path = filedialog.askopenfilename(
         filetypes=[
             ("Text_Files", "*.txt"),
@@ -58,21 +59,26 @@ def open_file():
         root.title(f"{current_file} - text editor")
 
 def save_file():
-    file_path = filedialog.asksaveasfilename(
-        defaultextension=".txt",
-        filetypes=[
-            ("Text_Files", "*.txt"),
-            ("All Files", "*.*")
-        ]
-    )
+    global current_file
 
-    if file_path:
-        content = text_area.get("1.0", tk.END)
+    if current_file is None:
+        current_file = filedialog.asksaveasfilename(
+            defaultextension=".txt",
+            filetypes=[
+                ("Text Files", "*.txt"),
+                ("All Files", "*.*")
+            ]
+        )
 
-        with open(file_path, "w") as f:
-            f.write(content)
+        if not current_file:
+            return
 
-    print("save_file")
+    content = text_area.get("1.0", tk.END)
+
+    with open(current_file, "w") as f:
+        f.write(content)
+
+    root.title(f"{current_file} - text editor")
 
 #====================EDIT========================
 
