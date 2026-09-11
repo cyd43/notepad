@@ -74,7 +74,7 @@ def save_file():
 
     print("save_file")
 
-#====================EDIT
+#====================EDIT========================
 
 def font_menu():
     text_area.config(font="Courier") #test===================================
